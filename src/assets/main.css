@@ -1,0 +1,57 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Red Hat Display';
+  src: url('./fonts/RedHatDisplay-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@theme {
+  --font-display: 'Red Hat Display', sans-serif;
+
+  --color-text-primary: #000000;
+  --color-text-secondary: #FFFFFF;
+
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #000000;
+  --color-bg-variation: #F5F5F5;
+}
+
+@layer base {
+  /* mobile first */
+  html {
+    font-size: 16px;
+  }
+  
+  body {
+    font-family: theme(--font-display);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 0.9rem; /* 14.4px */
+  }
+  
+  h1 {
+    font-weight: 700;
+    font-size: 1.25rem; /* 20px */
+  }
+  
+  /* desktop */
+  @media (min-width: 768px) {
+    h1 {
+      font-weight: 800;
+      font-size: 2.813rem; /* 45px */
+    }
+
+    p {
+      font-weight: 600;
+      font-size: 1.125rem; /* 18px */
+    }
+  }
+}
