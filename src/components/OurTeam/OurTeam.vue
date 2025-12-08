@@ -4,7 +4,8 @@
             <h2 class="text-3xl border-b-2 pb-2 mb-6">Our Team</h2>
 
             <div class="relative min-h-64">
-                <PaginationControls @previous="handlePrevious" @next="handleNext" />
+                <PaginationControls @previous="prevPage" @next="nextPage" :disable-prev="currentPage === 1"
+                    :disable-next="currentPage === totalPages" />
 
                 <div v-if="isLoading" class="text-center py-10 text-gray-500">
                     <!-- TODO replace with skeleton loader -->
@@ -15,7 +16,7 @@
                     <HandleError :message="error" :callback="loadTeam" />
                 </div>
 
-                <TeamGallery v-else :team-members="teamMembers" />
+                <TeamGallery v-else :team-members="paginatedMembers" />
             </div>
         </div>
     </section>
@@ -24,19 +25,23 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { useTeamApi } from '@/composables/useTeamApi';
+import { useBreakpoint } from '@/composables/useBreakpoint';
 import HandleError from '@/components/ErrorHandling/HandleError.vue';
 import TeamGallery from '@/components/TeamGallery/TeamGallery.vue';
 import PaginationControls from '@/components/Navigation/PaginationControls.vue';
 
-const { teamMembers, isLoading, error, loadTeam } = useTeamApi();
+const { membersPerPage } = useBreakpoint();
+
+const {
+    isLoading,
+    error,
+    loadTeam,
+    paginatedMembers,
+    currentPage,
+    totalPages,
+    nextPage,
+    prevPage
+} = useTeamApi(membersPerPage);
 
 onMounted(loadTeam);
-
-const handlePrevious = () => {
-    // TODO
-};
-
-const handleNext = () => {
-    // TODO
-};
 </script>
