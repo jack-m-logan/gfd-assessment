@@ -3,5 +3,6 @@ export interface TeamMember {
     name: string;
     title: string;
     bio: string;
-    photoUrl: string;
+    photoUrlBw: string;
+    photoUrlColor: string;
 }

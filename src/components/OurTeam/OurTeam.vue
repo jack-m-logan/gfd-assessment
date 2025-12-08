@@ -16,7 +16,10 @@
                     <HandleError :message="error" :callback="loadTeam" />
                 </div>
 
-                <TeamGallery v-else :team-members="paginatedMembers" />
+                <!-- TODO maintain height to prevent layout shift -->
+                <!-- TODO add GFD tiles when grid is 5 x 3  -->
+                <TeamGallery v-else :team-members="paginatedMembers" @select-member="setSelectedMember" />
+                <TeamMemberModal :member="selectedMember" :close="clearSelectedMember" />
             </div>
         </div>
     </section>
@@ -29,6 +32,7 @@ import { useBreakpoint } from '@/composables/useBreakpoint';
 import HandleError from '@/components/ErrorHandling/HandleError.vue';
 import TeamGallery from '@/components/TeamGallery/TeamGallery.vue';
 import PaginationControls from '@/components/Navigation/PaginationControls.vue';
+import TeamMemberModal from '@/components/TeamGallery/TeamMemberModal.vue';
 
 const { membersPerPage } = useBreakpoint();
 
@@ -40,7 +44,10 @@ const {
     currentPage,
     totalPages,
     nextPage,
-    prevPage
+    prevPage,
+    selectedMember,
+    clearSelectedMember,
+    setSelectedMember
 } = useTeamApi(membersPerPage);
 
 onMounted(loadTeam);

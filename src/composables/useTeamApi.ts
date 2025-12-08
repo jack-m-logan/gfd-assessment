@@ -48,11 +48,21 @@ export function useTeamApi(membersPerPage: Ref<number>) {
             teamMembers.value = [...mockTeamData]; 
         } catch (err) {
             error.value = 'Failed to fetch team data';
-            
+
             console.error('API failed to return team data:', err);
         } finally {
             isLoading.value = false;
         }
+    };
+
+    const selectedMember = ref<TeamMember | null>(null);
+
+    const setSelectedMember = (member: TeamMember) => {
+        selectedMember.value = member;
+    };
+    
+    const clearSelectedMember = () => {
+        selectedMember.value = null;
     };
 
     return {
@@ -64,6 +74,9 @@ export function useTeamApi(membersPerPage: Ref<number>) {
         currentPage,
         totalPages,
         nextPage,
-        prevPage
+        prevPage,
+        setSelectedMember,
+        clearSelectedMember,
+        selectedMember
     };
 }
