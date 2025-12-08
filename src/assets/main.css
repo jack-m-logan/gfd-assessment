@@ -41,6 +41,11 @@
     font-weight: 700;
     font-size: 1.25rem; /* 20px */
   }
+
+  h2 {
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
   
   /* desktop */
   @media (min-width: 768px) {
