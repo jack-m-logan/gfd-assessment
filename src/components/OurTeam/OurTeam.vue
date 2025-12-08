@@ -9,10 +9,8 @@
                     <p>Loading team members...</p>
                 </div>
 
-                <div v-else-if="error" class="text-center py-10 bg-red-100 text-red-700 p-4 border rounded">
-                    <p class="font-bold mb-2">Oops! Looks like there was an error:</p>
-                    <p>{{ error }}</p>
-                    <button @click="loadTeam()" class="mt-2 text-sm underline">Try Again</button>
+                <div v-else-if="error">
+                    <HandleError :message="error" :callback="loadTeam" />
                 </div>
 
                 <div v-else>
