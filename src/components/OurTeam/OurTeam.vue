@@ -1,10 +1,13 @@
 <template>
     <section class="p-4 md:p-12">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl border-b border-gray-300 pb-2 mb-6">Our Team</h2>
+            <h2 class="text-3xl border-b-2 pb-2 mb-6">Our Team</h2>
 
             <div class="relative min-h-64">
+                <PaginationControls @previous="handlePrevious" @next="handleNext" />
+
                 <div v-if="isLoading" class="text-center py-10 text-gray-500">
+                    <!-- TODO replace with skeleton loader -->
                     <p>Loading team members...</p>
                 </div>
 
@@ -23,8 +26,17 @@ import { onMounted } from 'vue';
 import { useTeamApi } from '@/composables/useTeamApi';
 import HandleError from '@/components/ErrorHandling/HandleError.vue';
 import TeamGallery from '@/components/TeamGallery/TeamGallery.vue';
+import PaginationControls from '@/components/Navigation/PaginationControls.vue';
 
 const { teamMembers, isLoading, error, loadTeam } = useTeamApi();
 
 onMounted(loadTeam);
+
+const handlePrevious = () => {
+    // TODO
+};
+
+const handleNext = () => {
+    // TODO
+};
 </script>
