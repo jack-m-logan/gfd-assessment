@@ -8,6 +8,24 @@ export function useTeamApi(membersPerPage: Ref<number>) {
     const error = ref<string | null>(null);
     const currentPage = ref(1);
 
+    // fetch mock team data
+    const loadTeam = async () => {
+        isLoading.value = true;
+        error.value = null;
+        
+        try {
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            teamMembers.value = [...mockTeamData]; 
+        } catch (err) {
+            error.value = 'Failed to fetch team data';
+
+            console.error('API failed to return team data:', err);
+        } finally {
+            isLoading.value = false;
+        }
+    };
+
     // reset when page is resized
     watch(membersPerPage, () => {
       currentPage.value = 1;
@@ -26,6 +44,7 @@ export function useTeamApi(membersPerPage: Ref<number>) {
         return teamMembers.value.slice(start, end);
     });
 
+    // page navigation
     const nextPage = () => {
         if (currentPage.value < totalPages.value) {
             currentPage.value++;
@@ -38,23 +57,7 @@ export function useTeamApi(membersPerPage: Ref<number>) {
         }
     };
 
-    const loadTeam = async () => {
-        isLoading.value = true;
-        error.value = null;
-        
-        try {
-            await new Promise(resolve => setTimeout(resolve, 500));
-            
-            teamMembers.value = [...mockTeamData]; 
-        } catch (err) {
-            error.value = 'Failed to fetch team data';
-
-            console.error('API failed to return team data:', err);
-        } finally {
-            isLoading.value = false;
-        }
-    };
-
+    // open modal
     const selectedMember = ref<TeamMember | null>(null);
 
     const setSelectedMember = (member: TeamMember) => {
@@ -64,6 +67,37 @@ export function useTeamApi(membersPerPage: Ref<number>) {
     const clearSelectedMember = () => {
         selectedMember.value = null;
     };
+    
+    // modal navigation
+    const goToNextMember = () => {
+        if (!teamMembers.value.length || !selectedMember.value) return; // error handling eg toast
+
+        const currentIndex = teamMembers.value.findIndex(m => m.id === selectedMember.value!.id);
+        
+        // check if the current member was found and is not the last
+        if (currentIndex >= 0 && currentIndex < teamMembers.value.length - 1) {
+            selectedMember.value = teamMembers.value[currentIndex + 1] as TeamMember;
+        }
+    };
+
+    const goToPrevMember = () => {
+        if (!teamMembers.value.length || !selectedMember.value) return; // error handling eg toast
+
+        const currentIndex = teamMembers.value.findIndex(m => m.id === selectedMember.value!.id);
+        
+        // check if the current member was found and is not the first
+        if (currentIndex > 0) {
+            selectedMember.value = teamMembers.value[currentIndex - 1] as TeamMember;
+        }
+    };
+
+    const isFirstMember = computed(() => {
+        return teamMembers.value.findIndex(m => m.id === selectedMember.value?.id) === 0;
+    });
+
+    const isLastMember = computed(() => {
+        return teamMembers.value.findIndex(m => m.id === selectedMember.value?.id) === teamMembers.value.length - 1;
+    });
 
     return {
         teamMembers,
@@ -77,6 +111,10 @@ export function useTeamApi(membersPerPage: Ref<number>) {
         prevPage,
         setSelectedMember,
         clearSelectedMember,
-        selectedMember
+        selectedMember,
+        goToNextMember,
+        goToPrevMember,
+        isFirstMember,
+        isLastMember
     };
 }

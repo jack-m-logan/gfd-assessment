@@ -3,14 +3,15 @@
         class="fixed inset-0 z-[100] bg-opacity-70 flex items-center justify-center transition-opacity duration-300">
 
         <div @click.stop
-            class="bg-white p-6 w-full h-full md:w-4/5 md:max-h-[95vh] md:max-w-[90vw] md:rounded-lg border-1 border-gray-300 shadow-xl overflow-y-auto">
+            class="bg-white p-6 w-full h-full md:w-4/5 md:max-h-[95vh] md:max-w-[90vw] md:rounded-lg overflow-y-auto">
 
             <div class="flex justify-between items-center border-b mb-4">
                 <h2>Meet, <span class="font-normal">{{ member.name }}!</span></h2>
                 <button @click="close" class="text-4xl text-gray-500 hover:text-black">&times;</button>
             </div>
 
-            <PaginationControls class="mt-6" @previous="close" @next="close" />
+            <PaginationControls class="mt-6" @previous="prev" @next="next" :disable-prev="disablePrev"
+                :disable-next="disableNext" />
 
             <div class="max-w-md mx-auto">
                 <div class="mb-6 mt-6 flex justify-center">
@@ -34,7 +35,8 @@
                 <div class="pt-2">
                     <h2 class="border-b pb-1 mb-2">{{ member.title }}</h2>
                     <p class="text-justify">{{ member.bio }}</p>
-                    <PaginationControls class="hidden mt-6" @previous="close" @next="close" />
+                    <PaginationControls class="hidden mt-6" @previous="prev" @next="next" :disable-prev="disablePrev"
+                        :disable-next="disableNext" />
                 </div>
             </div>
         </div>
@@ -49,6 +51,10 @@ import PaginationControls from '../Navigation/PaginationControls.vue';
 const props = defineProps<{
     member: TeamMember | null;
     close: () => void;
+    next: () => void;
+    prev: () => void;
+    disableNext: boolean;
+    disablePrev: boolean;
 }>();
 
 const modalImageLoadError = ref(false);
