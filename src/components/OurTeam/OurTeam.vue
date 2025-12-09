@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted, watch } from 'vue';
 import { useTeamApi } from '@/composables/useTeamApi';
 import { useBreakpoint } from '@/composables/useBreakpoint';
 import HandleError from '@/components/ErrorHandling/HandleError.vue';
@@ -51,4 +51,13 @@ const {
 } = useTeamApi(membersPerPage);
 
 onMounted(loadTeam);
+
+// prevent scrolling when modal is open
+watch(selectedMember, (newMember) => {
+    if (newMember) {
+        document.body.classList.add('overflow-hidden');
+    } else {
+        document.body.classList.remove('overflow-hidden');
+    }
+}, { immediate: true });
 </script>
