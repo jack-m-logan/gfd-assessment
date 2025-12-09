@@ -1,21 +1,29 @@
 <template>
-    <div @click="$emit('selectMember', member)"
-        class="aspect-[3/4] bg-gray-200 overflow-hidden cursor-pointer hover:opacity-80 transition-opacity flex items-center justify-center">
+    <div @click="$emit('selectMember', member)" class="group relative aspect-[3/4] overflow-hidden cursor-pointer">
 
-        <img v-if="!imageLoadError" :src="member.photoUrlBw" :alt="`Photo of ${member.name}`"
-            class="w-full h-full object-cover grayscale" loading="lazy" @error="handleImageError">
+        <div
+            class="relative w-full h-full transform-style-3d transition-transform duration-700 ease-in-out group-hover:rotate-y-180">
+            <div class="absolute inset-0 backface-hidden flex items-center justify-center bg-gray-200">
+                <img v-if="!imageLoadError" :src="member.photoUrlBw" :alt="`Photo of ${member.name}`"
+                    class="w-full h-full object-cover grayscale" loading="lazy" @error="handleImageError">
 
-        <!-- would typically add a placeholder image or improved visual here -->
-        <div v-else class="text-center p-4">
-            <p class="text-xs mt-2 text-gray-500">Photo failed to load.</p>
+                <div v-else class="text-center p-4">
+                    <p class="text-xs mt-2">Photo failed to load.</p>
+                </div>
+            </div>
+
+            <div class="absolute inset-0 backface-hidden transform rotate-y-180">
+                <TeamMemberHoverCard :member="member" />
+            </div>
+
         </div>
-
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { TeamMember } from '@/types/team';
+import TeamMemberHoverCard from './TeamMemberHoverCard.vue';
 
 defineProps<{
     member: TeamMember
@@ -31,3 +39,17 @@ const handleImageError = () => {
     imageLoadError.value = true;
 };
 </script>
+
+<style scoped>
+.transform-style-3d {
+    transform-style: preserve-3d;
+}
+
+.backface-hidden {
+    backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+    transform: rotateY(180deg);
+}
+</style>

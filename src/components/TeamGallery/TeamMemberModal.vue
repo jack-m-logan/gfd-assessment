@@ -13,7 +13,7 @@
             <PaginationControls class="mt-6" @previous="prev" @next="next" :disable-prev="disablePrev"
                 :disable-next="disableNext" />
 
-            <div class="max-w-md mx-auto">
+            <div class="max-w-md md:max-w-xl mx-auto">
                 <div class="mb-6 mt-6 flex justify-center">
                     <div class="relative w-40 h-auto md:w-48 md:h-auto pt-4">
                         <div
