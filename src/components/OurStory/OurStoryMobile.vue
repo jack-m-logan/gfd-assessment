@@ -16,7 +16,7 @@
 
         <div class="absolute w-[75vw] max-w-[20rem] min-w-[12.5rem] 
                     h-fit-content top-[28%] z-100 left-[2%] bg-bg-primary p-4">
-            <h1 class="mb-6 border-b-2 pb-4">Our Story</h1>
+            <h1 class="mb-6 border-b-1 pb-1">Our Story</h1>
 
             <p class="mb-6">
                 Coming from a lifelong background in the double glazing industry,
@@ -33,7 +33,7 @@
     <!-- Our Story continued -->
     <section class="relative min-h-screen bg-bg-primary overflow-x-clip">
         <div class="absolute w-[92vw] max-w-[20rem] min-w-[12.5rem] 
-                    h-fit-content top-[28%] z-50 right-0 bg-bg-variation p-4">
+                    h-fit-content top-[25%] z-50 right-0 bg-bg-variation p-4">
             <p class="mb-10">
                 Over the past 15 years, we have expanded our portfolio of
                 products across a range of composite, aluminium, uPVC and
@@ -50,4 +50,5 @@
 <script setup lang="ts">
 import OurStoryProductCollage from './OurStoryProductCollage.vue';
 import OurStoryOfficeDoorCollage from './OurStoryOfficeDoorCollage.vue';
+
 </script>
