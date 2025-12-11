@@ -1,7 +1,7 @@
 <template>
     <section class="p-4 md:p-12">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl border-b-2 pb-2 mb-6">Our Team</h2>
+            <h2 class="text-3xl border-b-1 pb-2 mb-6">Our Team</h2>
 
             <div class="relative min-h-64">
                 <PaginationControls @previous="prevPage" @next="nextPage" :disable-prev="currentPage === 1"
