@@ -2,6 +2,11 @@ import { computed, ref, watch, type Ref } from 'vue';
 import type { TeamMember } from '@/types/team';
 import { mockTeamData } from '@/data/teamMembers';
 
+// GFD tiles
+const gTile: TeamMember = { id: 'gfd-g', name: 'G' };
+const fTile: TeamMember = { id: 'gfd-f', name: 'F' };
+const dTile: TeamMember = { id: 'gfd-d', name: 'D' };
+
 export function useTeamApi(membersPerPage: Ref<number>) {
     const teamMembers = ref<TeamMember[]>([]);
     const isLoading = ref(false);
@@ -19,32 +24,54 @@ export function useTeamApi(membersPerPage: Ref<number>) {
             teamMembers.value = [...mockTeamData]; 
         } catch (err) {
             error.value = 'Failed to fetch team data';
-
             console.error('API failed to return team data:', err);
         } finally {
             isLoading.value = false;
         }
     };
 
-    // reset when page is resized
     watch(membersPerPage, () => {
-      currentPage.value = 1;
+        currentPage.value = 1;
     });
+
+    const shouldShowGfdTiles = computed(() => membersPerPage.value === 15);
 
     const totalPages = computed(() => {
         if (membersPerPage.value === 0) return 1;
         
-        return Math.ceil(teamMembers.value.length / membersPerPage.value);
+        // only show 12 members if showing GFD tiles
+        const effectiveMembersPerPage = shouldShowGfdTiles.value 
+            ? membersPerPage.value - 3 
+            : membersPerPage.value;
+        
+        return Math.ceil(teamMembers.value.length / effectiveMembersPerPage);
     });
 
     const paginatedMembers = computed(() => {
-        const start = (currentPage.value - 1) * membersPerPage.value,
-            end = start + membersPerPage.value;
+        const effectiveMembersPerPage = shouldShowGfdTiles.value 
+            ? membersPerPage.value - 3 
+            : membersPerPage.value;
+        
+        const start = (currentPage.value - 1) * effectiveMembersPerPage;
+        const end = start + effectiveMembersPerPage;
 
-        return teamMembers.value.slice(start, end);
+        const members = teamMembers.value.slice(start, end);
+
+        if (shouldShowGfdTiles.value && members.length === 12) {
+            return [
+                members[0],
+                gTile,
+                ...members.slice(1, 6),
+                fTile,
+                ...members.slice(6, 11),
+                dTile,
+                members[11]
+            ];
+        }
+
+        return members;
     });
 
-    // page navigation
     const nextPage = () => {
         if (currentPage.value < totalPages.value) {
             currentPage.value++;
@@ -61,6 +88,8 @@ export function useTeamApi(membersPerPage: Ref<number>) {
     const selectedMember = ref<TeamMember | null>(null);
 
     const setSelectedMember = (member: TeamMember) => {
+        // don't open modal for GFD tiles
+        if (member.id.toString().startsWith('gfd-')) return;
         selectedMember.value = member;
     };
     

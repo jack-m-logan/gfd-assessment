@@ -1,7 +1,7 @@
 <template>
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         <TeamMemberCard v-for="member in teamMembers" :key="member.id" :member="member"
-            @select-member="$emit('selectMember', $event)" />
+            :is-gfd-tile="member.id.toString().startsWith('gfd-')" @select-member="$emit('selectMember', $event)" />
     </div>
 </template>
 

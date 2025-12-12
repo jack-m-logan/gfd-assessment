@@ -17,8 +17,8 @@
                 </div>
 
                 <!-- TODO maintain height to prevent layout shift -->
-                <!-- TODO add GFD tiles when grid is 5 x 3  -->
                 <TeamGallery v-else :team-members="paginatedMembers" @select-member="setSelectedMember" />
+
                 <TeamMemberModal :member="selectedMember" :close="clearSelectedMember" :next="goToNextMember"
                     :prev="goToPrevMember" :disable-next="isLastMember" :disable-prev="isFirstMember" />
             </div>

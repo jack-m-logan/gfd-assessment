@@ -1,8 +1,8 @@
 export interface TeamMember {
-    id: number;
+    id: number | string ;
     name: string;
-    title: string;
-    bio: string;
-    photoUrlBw: string;
-    photoUrlColor: string;
+    title?: string;
+    bio?: string;
+    photoUrlBw?: string;
+    photoUrlColor?: string;
 }
