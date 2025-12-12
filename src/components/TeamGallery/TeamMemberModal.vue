@@ -23,7 +23,7 @@
                         <div
                             class="relative w-full h-full z-10 overflow-hidden shadow-lg transform translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4">
                             <img v-if="!modalImageLoadError" :src="member.photoUrlColor" :alt="member.name"
-                                class="w-full h-full object-cover" @error="handleModalImageError">
+                                class="w-full h-full object-cover" @error="handleModalImageError" loading="lazy">
 
                             <div v-else class="w-full h-full flex items-center justify-center bg-gray-300">
                                 <p>Photo unavailable.</p>

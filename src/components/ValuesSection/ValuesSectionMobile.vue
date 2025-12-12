@@ -12,10 +12,10 @@
         <div class="flex justify-start py-6">
             <div class="flex w-[90%] max-w-lg">
                 <img src="@/assets/images/optimised/values-ethos-first-row-4.webp" class="w-1/2 shadow-xl"
-                    alt="Exterior of a home">
+                    alt="Exterior of a home" loading="lazy">
 
                 <img src="@/assets/images/optimised/values-ethos-first-row-5.webp" class="w-1/2 shadow-xl"
-                    alt="Home interior with bi-fold doors and a fireplace">
+                    alt="Home interior with bi-fold doors and a fireplace" loading="lazy">
             </div>
         </div>
 
@@ -31,10 +31,10 @@
         <div class="flex justify-end py-6">
             <div class="flex w-[90%] max-w-lg">
                 <img src="@/assets/images/optimised/values-ethos-second-row-1.webp" class="w-1/2 shadow-xl"
-                    alt="A doorway and entry to a home">
+                    alt="A doorway and entry to a home" loading="lazy">
 
                 <img src="@/assets/images/optimised/values-ethos-second-row-2.webp" class="w-1/2 shadow-xl"
-                    alt="Home exterior with a green door">
+                    alt="Home exterior with a green door" loading="lazy">
             </div>
         </div>
 

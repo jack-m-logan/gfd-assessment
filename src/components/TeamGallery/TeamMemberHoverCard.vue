@@ -18,7 +18,7 @@
 
                     <div class="flex row align-self-center">
                         <img src="@/assets/icons/arrow-top-right.png" alt="An arrow pointing to the top right"
-                            class="ml-2 h-5 w-5 object-cover align-self-center">
+                            class="ml-2 h-5 w-5 object-cover align-self-center" loading="lazy">
                     </div>
                 </button>
             </div>

@@ -19,7 +19,7 @@
                             class="absolute bottom-0 left-1/2 -translate-x-1/2 h-[200px] w-[160px] md:w-[200px] overflow-visible">
                             <img src="@/assets/images/optimised/values-ethos-cottage.webp"
                                 class="w-full h-full object-cover object-center shadow-xl"
-                                alt="Exterior of a cottage with a blue door">
+                                alt="Exterior of a cottage with a blue door" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -29,27 +29,36 @@
                         <div class="h-[150px] md:h-[180px] lg:h-[200px]">
                             <div class="flex flex-row h-full">
                                 <img src="@/assets/images/optimised/values-ethos-first-row-1.webp"
-                                    class="h-full w-auto object-cover shadow-xl" alt="Exterior of a home">
-                                <img src="@/assets/images/optimised/values-ethos-first-row-2.webp"
-                                    class="h-full w-auto object-cover shadow-xl" alt="Exterior of a home">
+                                    class="h-full w-auto object-cover shadow-xl" alt="A man walking into a house"
+                                    loading="lazy">
+                                <img src="@/assets/images/optimised/our-story-bed-center.webp"
+                                    class="h-full w-auto object-cover shadow-xl"
+                                    alt="A bed with a large skylight above it" loading="lazy">
                                 <img src="@/assets/images/optimised/values-ethos-first-row-3.webp"
-                                    class="h-full w-auto object-cover shadow-xl" alt="Exterior of a home">
+                                    class="h-full w-auto object-cover shadow-xl" alt="A blue door on an elegant home"
+                                    loading="lazy">
                                 <img src="@/assets/images/optimised/values-ethos-first-row-4.webp"
-                                    class="h-full w-auto object-cover shadow-xl" alt="Exterior of a home">
+                                    class="h-full w-auto object-cover shadow-xl" alt="External view of a home"
+                                    loading="lazy">
                                 <img src="@/assets/images/optimised/values-ethos-first-row-5.webp"
-                                    class="h-full w-auto object-cover shadow-xl" alt="Exterior of a home">
+                                    class="h-full w-auto object-cover shadow-xl"
+                                    alt="Interior view of a home with large windows" loading="lazy">
                             </div>
                         </div>
                         <div class="h-[175px] md:h-[200px] lg:h-[220px]">
                             <div class="flex flex-row h-full">
                                 <img src="@/assets/images/optimised/values-ethos-second-row-1.webp"
-                                    class="h-full w-auto object-cover shadow-xl" alt="Exterior of a home">
+                                    class="h-full w-auto object-cover shadow-xl" alt="A home entry with lot of plants"
+                                    loading="lazy">
                                 <img src="@/assets/images/optimised/values-ethos-second-row-2.webp"
-                                    class="h-full w-auto object-cover shadow-xl" alt="Exterior of a home">
+                                    class="h-full w-auto object-cover shadow-xl"
+                                    alt="Exterior of a home with large windows" loading="lazy">
                                 <img src="@/assets/images/optimised/values-ethos-second-row-3.webp"
-                                    class="h-full w-auto object-cover shadow-xl" alt="Exterior of a home">
+                                    class="h-full w-auto object-cover shadow-xl"
+                                    alt="Kitchen interior with a large window and table" loading="lazy">
                                 <img src="@/assets/images/optimised/values-ethos-second-row-4.webp"
-                                    class="h-full w-auto object-cover shadow-xl" alt="Exterior of a home">
+                                    class="h-full w-auto object-cover shadow-xl" alt="Exterior of a modern home"
+                                    loading="lazy">
                             </div>
                         </div>
                         <div class="flex items-center justify-center py-8 border-b-1">
