@@ -1,48 +1,32 @@
-# gfd-assessment
+# GFD Assessment
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+A responsive company landing page showcasing GFD Homes' story, products, and team. Built with Vue 3, TypeScript, and Tailwind CSS.
 
 ## Project Setup
+
+VS Code Extensions:
+
+- Vue (Official) - Essential for Vue 3 Composition API support
+- ESLint
+- Important: Disable the built-in TypeScript and JavaScript extension in workspace settings (search ```@builtin typescript and javascript``` in Extensions) to avoid conflicts with Vue tooling.
+
+Images can be added to the src/assets/images/raw folder (ignored by git) and then optimised as lightweight .webp format by running ```npm run optimize-images``` which will add them to the /optimised folder. 
+
+Install dependencies:
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+Then run locally with:
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## Future Improvements
 
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- [ ] Implement ImageLabel component for product labels
+- [ ] Refactor mobile/desktop components to reduce duplication
+- [ ] Enhance grid-based layouts for better maintainability
+- [ ] Add unit tests
