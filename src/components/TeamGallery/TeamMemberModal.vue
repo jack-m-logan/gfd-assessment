@@ -1,12 +1,12 @@
 <template>
     <div v-if="member" @click="close"
-        class="fixed inset-0 z-[100] bg-opacity-70 flex items-center justify-center transition-opacity duration-300">
+        class="fixed inset-0 z-[100] bg-bg-variation/90 flex items-center justify-center transition-opacity duration-200">
 
         <div @click.stop
-            class="bg-white p-6 w-full h-full md:w-4/5 md:max-h-[95vh] md:max-w-[90vw] md:rounded-lg overflow-y-auto">
+            class="bg-white p-6 w-full h-full md:w-3/5 md:h-[95vh] md:max-h-[53rem] max md:max-w-[37.5rem] md:rounded-lg xxl:h-3/4 overflow-y-auto shadow-2xl">
 
             <div class="flex justify-between items-center border-b mb-4">
-                <h2>Meet, <span class="font-normal">{{ member.name }}!</span></h2>
+                <h2 class="text-4xl">Meet, <span class="font-normal">{{ member.name }}!</span></h2>
                 <button @click="close" class="text-4xl text-gray-500 hover:text-black">&times;</button>
             </div>
 
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="pt-2">
-                    <h2 class="border-b pb-1 mb-2">{{ member.title }}</h2>
+                    <h2 class="text-3xl border-b pb-1 mb-2">{{ member.title }}</h2>
                     <p class="text-justify">{{ member.bio }}</p>
                     <PaginationControls class="hidden mt-6" @previous="prev" @next="next" :disable-prev="disablePrev"
                         :disable-next="disableNext" />
