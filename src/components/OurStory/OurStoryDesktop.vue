@@ -1,5 +1,5 @@
 <template>
-    <section class="relative bg-bg-secondary h-screen max-h-[1000px] overflow-clip hidden md:block">
+    <section class="relative bg-bg-secondary h-screen max-h-[1000px] overflow-clip">
         <div class="absolute h-full w-full top-0 left-0">
             <div class="h-full w-[45%] bg-bg-primary"></div>
         </div>
