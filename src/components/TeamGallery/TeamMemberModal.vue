@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="pt-2">
-                    <h2 class="text-3xl border-b pb-1 mb-2">{{ member.title }}</h2>
+                    <h2 class="border-b pb-1 mb-2">{{ member.title }}</h2>
                     <p class="text-justify">{{ member.bio }}</p>
                     <PaginationControls class="hidden mt-6" @previous="prev" @next="next" :disable-prev="disablePrev"
                         :disable-next="disableNext" />

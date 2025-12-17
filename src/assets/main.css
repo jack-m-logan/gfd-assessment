@@ -60,12 +60,12 @@
   @media (min-width: 768px) {
     h1 {
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.875rem; /* 30px */
     }
 
     h2 {
       font-weight: 700;
-      font-size: 1.25rem;
+      font-size: 1.875rem;
     }
 
     p {
@@ -83,11 +83,10 @@
 
     h2 {
       font-weight: 700;
-      font-size: 3.125rem; /* 50px */
     }
 
     .gfd-tiles {
-      font-size: 18rem;
+      font-size: 15rem;
       font-weight: 400;
       font-family: theme(--font-inter);
     }
