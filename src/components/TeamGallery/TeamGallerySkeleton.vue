@@ -1,0 +1,10 @@
+<template>
+    <div class="animate-pulse flex space-x-4">
+        <div class="flex-1 space-y-4 py-1">
+            <div class="h-64 bg-gray-200 rounded"></div>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+</script>

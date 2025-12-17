@@ -8,8 +8,9 @@
                     :disable-next="currentPage === totalPages" />
 
                 <div v-if="isLoading" class="text-center py-10 text-gray-500">
-                    <!-- TODO replace with skeleton loader -->
-                    <p>Loading team members...</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                        <TeamGallerySkeleton v-for="n in membersPerPage" :key="n" />
+                    </div>
                 </div>
 
                 <div v-else-if="error">
@@ -34,6 +35,7 @@ import HandleError from '@/components/ErrorHandling/HandleError.vue';
 import TeamGallery from '@/components/TeamGallery/TeamGallery.vue';
 import PaginationControls from '@/components/Navigation/PaginationControls.vue';
 import TeamMemberModal from '@/components/TeamGallery/TeamMemberModal.vue';
+import TeamGallerySkeleton from '@/components/TeamGallery/TeamGallerySkeleton.vue';
 
 const { membersPerPage } = useBreakpoint();
 
