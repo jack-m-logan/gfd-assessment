@@ -29,33 +29,42 @@
 
 <script setup lang="ts">
 import { onMounted, watch } from 'vue';
-import { useTeamApi } from '@/composables/useTeamApi';
 import { useBreakpoint } from '@/composables/useBreakpoint';
 import HandleError from '@/components/ErrorHandling/HandleError.vue';
 import TeamGallery from '@/components/TeamGallery/TeamGallery.vue';
 import PaginationControls from '@/components/Navigation/PaginationControls.vue';
 import TeamMemberModal from '@/components/TeamGallery/TeamMemberModal.vue';
 import TeamGallerySkeleton from '@/components/TeamGallery/TeamGallerySkeleton.vue';
+import { useTeamData } from '@/composables/useTeamData';
+import { usePagination } from '@/composables/usePagination';
+import { useTeamModal } from '@/composables/useTeamModal';
 
 const { membersPerPage } = useBreakpoint();
 
 const {
+    loadTeam,
     isLoading,
     error,
-    loadTeam,
+    teamMembers
+} = useTeamData();
+
+const {
     paginatedMembers,
     currentPage,
     totalPages,
     nextPage,
-    prevPage,
+    prevPage
+} = usePagination(teamMembers, membersPerPage);
+
+const {
     selectedMember,
-    clearSelectedMember,
     setSelectedMember,
+    clearSelectedMember,
     goToNextMember,
     goToPrevMember,
     isFirstMember,
     isLastMember
-} = useTeamApi(membersPerPage);
+} = useTeamModal(teamMembers);
 
 onMounted(loadTeam);
 
